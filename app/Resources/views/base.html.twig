@@ -1,13 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
     <head>
         <meta charset="UTF-8" />
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <title>{% block title %} Welcome! {% endblock %}</title>
+
+        <!-- Bootstrap -->
+        <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <!-- font-awesome -->
+        <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+
     </head>
     <body>
         {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
+        {% block javascripts %}
+            <script src="{{ asset('jquery/jquery-3.2.1.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+        {% endblock %}
     </body>
 </html>
