@@ -12,6 +12,18 @@ class CancionesController extends Controller
      */
     public function listarAction()
     {
-        return $this->render('canciones/listar.html.twig');
+        $canciones = [
+            ['artista' => 'The Unguided', 'titulo' => 'Phoenix Down', 'duracion' => '3:33', 'anio' => '2011' ],
+            ['artista' => 'Five Finger Death Punch', 'titulo' => 'Bad Company', 'duracion' => '4:22', 'anio' => '2009'],
+            ['artista' => 'Five Finger Death Punch', 'titulo' => 'Wrong Side of Heaven', 'duracion' => '4:31', 'anio' => '2013']
+
+
+            ];
+
+
+
+
+
+        return $this->render('canciones/listar.html.twig', ['canciones' => $canciones ]);
     }
 }
