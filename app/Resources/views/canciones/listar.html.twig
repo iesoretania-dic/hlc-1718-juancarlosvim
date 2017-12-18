@@ -16,7 +16,7 @@
         <tbody>
             {% for cancion in canciones %}
                 <tr>
-                    <td><a href="{{ path('canciones_listar', {'id': cancion.id}) }}">{{ cancion.artista }}</a></td>
+                    <td><a href="{{ path('canciones_mostrar', {'id': cancion.id}) }}">{{ cancion.artista }}</a></td>
                     <td>{{ cancion.titulo }}</td>
                     <td>{{ cancion.duracion }}</td>
                     <td>{{ cancion.anio }}</td>
