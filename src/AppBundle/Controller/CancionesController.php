@@ -21,6 +21,8 @@ class CancionesController extends Controller
         return $this->render('canciones/listar.html.twig', ['canciones' => $canciones ]);
     }
 
+
+
     private function getCanciones(){
 
         return [
