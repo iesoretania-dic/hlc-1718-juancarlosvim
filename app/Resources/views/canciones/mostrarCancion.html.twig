@@ -1,9 +1,9 @@
 {% extends 'layout.html.twig' %}
 
-{% block title 'Catálogo de canciones'%}
+{% block title 'Mostrar descripcion'%}
 
 {% block content %}
-    <h1>Catálogo de canciones</h1>
+    <h1>Descripción de {{ canciones.artista }}</h1>
 
     <table class="table table-bordered table-hover table-striped">
         <thead>
@@ -17,4 +17,7 @@
         </tr>
         </tbody>
     </table>
+
+    <a href="{{ path('canciones_listar') }}"> <button type="button" class="btn btn-lg btn-primary">Volver al listado de canciones</button></a>
+
 {% endblock %}
