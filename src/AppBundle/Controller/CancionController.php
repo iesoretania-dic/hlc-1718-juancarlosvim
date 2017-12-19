@@ -5,7 +5,7 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class CancionesController extends Controller
+class CancionController extends Controller
 {
     /**
      * @Route("/canciones", name="canciones_listar")
@@ -13,10 +13,6 @@ class CancionesController extends Controller
     public function listarAction()
     {
         $canciones =$this->getCanciones();
-
-
-
-
 
         return $this->render('canciones/listar.html.twig', ['canciones' => $canciones ]);
     }
