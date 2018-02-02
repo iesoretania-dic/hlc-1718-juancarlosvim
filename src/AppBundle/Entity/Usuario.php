@@ -11,6 +11,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="usuario")
+ */
 class Usuario
 {
     /**
@@ -46,7 +50,7 @@ class Usuario
      */
     private $apellidos;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTime
      */
