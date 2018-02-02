@@ -54,7 +54,7 @@ class Usuario
      *
      * @var \DateTime
      */
-    private $fechaNacimiento
+    private $fechaNacimiento;
     /**
      * @ORM\Column(type="string")
      *

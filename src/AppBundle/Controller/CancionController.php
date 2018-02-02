@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Cancion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -20,13 +21,8 @@ class CancionController extends Controller
     /**
      * @Route("/canciones/{id}", name="canciones_mostrar")
      */
-    public function mostrarAction($id)
+    public function mostrarAction(Cancion $cancion)
     {
-        $cancion = $canciones = $this->getDoctrine()->getRepository('AppBundle:Cancion')->find($id);
-        if(null == $cancion){
-            throw $this->createNotFoundException();
-        }
-
         return $this->render('canciones/mostrarCancion.html.twig',
             ['canciones' => $cancion]);
     }

@@ -11,6 +11,10 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity
+ * @ORM\Table(name="cancion")
+ */
 class Cancion
 {
     /**
@@ -38,7 +42,7 @@ class Cancion
      *
      * @var string
      */
-    private $duracion:
+    private $duracion;
     /**
      * @ORM\Column(type="date")
      *
