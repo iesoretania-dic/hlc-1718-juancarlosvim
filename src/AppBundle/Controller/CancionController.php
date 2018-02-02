@@ -23,6 +23,9 @@ class CancionController extends Controller
     public function mostrarAction($id)
     {
         $canciones =$this->getCanciones();
+        if(!isset($ideas[$id])){
+            throw $this->createNotFoundException();
+        }
 
         return $this->render('canciones/mostrarCancion.html.twig',
             ['canciones' => $canciones[$id] ]);
