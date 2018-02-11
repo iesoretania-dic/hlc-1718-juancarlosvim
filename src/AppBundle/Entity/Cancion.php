@@ -70,35 +70,37 @@ class Cancion
         $this->id = $id;
     }
     /**
-     * @return mixed
+     * @return string
      */
     public function getArtista()
     {
         return $this->artista;
     }
     /**
-     * @param mixed $artista
+     * @param string $artista
+     * @return Cancion
      */
     public function setArtista($artista)
     {
         $this->artista = $artista;
+        return $this;
     }
     /**
-     * @return mixed
+     * @return string
      */
     public function getTitulo()
     {
         return $this->titulo;
     }
     /**
-     * @param mixed $titulo
+     * @param string $titulo
      */
     public function setTitulo($titulo)
     {
         $this->titulo = $titulo;
     }
     /**
-     * @return mixed
+     * @return string
      */
     public function getDuracion()
     {
