@@ -9,22 +9,22 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 class CancionController extends Controller
 {
     /**
-     * @Route("/canciones", name="canciones_listar")
+     * @Route("/canciones", name="cancion_listar")
      */
     public function listarAction()
     {
         $canciones =$this->getDoctrine()->getRepository('AppBundle:Cancion')->findAll();
 
-        return $this->render('canciones/listar.html.twig', ['canciones' => $canciones ]);
+        return $this->render('cancion/listar.html.twig', ['canciones' => $canciones ]);
     }
 
     /**
-     * @Route("/canciones/{id}", name="canciones_mostrar")
+     * @Route("/cancion/{id}", name="cancion_mostrar")
      */
     public function mostrarAction(Cancion $cancion)
     {
-        return $this->render('canciones/mostrarCancion.html.twig',
-            ['canciones' => $cancion]);
+        return $this->render('cancion/mostrarCancion.html.twig',
+            ['cancion' => $cancion]);
     }
 
 

@@ -17,7 +17,7 @@
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li{% if app.request.attributes.get('_route') == 'inicio' %} class="active"{% endif %}><a href="{{ path('inicio') }}"><i class="fa fa-home"></i> Inicio</a></li>
-                    <li{% if app.request.attributes.get('_route') == 'canciones_listar' %} class="active"{% endif %}><a href="{{ path('canciones_listar') }}"><i class="fa fa-music"></i> Canciones</a></li>
+                    <li{% if app.request.attributes.get('_route') == 'cancion_listar' %} class="active"{% endif %}><a href="{{ path('cancion_listar') }}"><i class="fa fa-music"></i> Canciones</a></li>
 
                 </ul>
             </div><!--/.nav-collapse -->

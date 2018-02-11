@@ -3,7 +3,7 @@
 {% block title 'Mostrar descripcion'%}
 
 {% block content %}
-    <h1>Descripción de {{ canciones.artista }}</h1>
+    <h1>Descripción de {{ canciones.artista}}</h1>
 
     <table class="table table-bordered table-hover table-striped">
         <thead>
@@ -11,7 +11,9 @@
         </thead>
         <tbody>
         <tr>
-            <td>{{ canciones.descripcion }}</td>
+            <td>{{ canciones.titulo }}</td>
+            <td>{{ canciones.duracion }}</td>
+            <td>{{ canciones.fechaCancion }}</td>
         </tr>
         </tbody>
     </table>
