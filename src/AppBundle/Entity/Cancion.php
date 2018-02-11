@@ -55,20 +55,71 @@ class Cancion
      *@var string
      */
     private $genero;
-     /**
-     * @return mixed
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
+
     /**
-     * @param mixed $id
+     * @param int $id
      */
     public function setId($id)
     {
         $this->id = $id;
     }
+
+    /**
+     * @param string $artista
+     */
+    public function setArtista($artista)
+    {
+        $this->artista = $artista;
+    }
+
+    /**
+     * @param string $titulo
+     * @return Cancion
+     */
+    public function setTitulo($titulo)
+    {
+        $this->titulo = $titulo;
+        return $this;
+    }
+
+    /**
+     * @param string $duracion
+     * @return Cancion
+     */
+    public function setDuracion($duracion)
+    {
+        $this->duracion = $duracion;
+        return $this;
+    }
+
+    /**
+     * @param \DateTime $fechaCancion
+     * @return Cancion
+     */
+    public function setFechaCancion($fechaCancion)
+    {
+        $this->fechaCancion = $fechaCancion;
+        return $this;
+    }
+
+    /**
+     * @param string $genero
+     * @return Cancion
+     */
+    public function setGenero($genero)
+    {
+        $this->genero = $genero;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
     /**
      * @return string
      */
@@ -76,15 +127,7 @@ class Cancion
     {
         return $this->artista;
     }
-    /**
-     * @param string $artista
-     * @return Cancion
-     */
-    public function setArtista($artista)
-    {
-        $this->artista = $artista;
-        return $this;
-    }
+
     /**
      * @return string
      */
@@ -92,13 +135,7 @@ class Cancion
     {
         return $this->titulo;
     }
-    /**
-     * @param string $titulo
-     */
-    public function setTitulo($titulo)
-    {
-        $this->titulo = $titulo;
-    }
+
     /**
      * @return string
      */
@@ -106,40 +143,22 @@ class Cancion
     {
         return $this->duracion;
     }
+
     /**
-     * @param mixed $duracion
-     */
-    public function setDuracion($duracion)
-    {
-        $this->duracion = $duracion;
-    }
-    /**
-     * @return mixed
+     * @return \DateTime
      */
     public function getFechaCancion()
     {
         return $this->fechaCancion;
     }
+
     /**
-     * @param mixed $fechaCancion
-     */
-    public function setFechaCancion($fechaCancion)
-    {
-        $this->fechaCancion = $fechaCancion;
-    }
-    /**
-     * @return mixed
+     * @return string
      */
     public function getGenero()
     {
         return $this->genero;
     }
-    /**
-     * @param mixed $genero
-     */
-    public function setGenero($genero)
-    {
-        $this->genero = $genero;
-    }
+
 
 }
