@@ -1,0 +1,40 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Todos los usuarios'%}
+
+{% block content %}
+    <h1>Todos los usuarios</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+
+            <th>NombreUsuario</th>
+            <th>password</th>
+            <th>nombre</th>
+            <th>apellidos</th>
+            <th>Fecha Nacimiento</th>
+            <th>correo</th>
+            <th>administrador</th>
+            <th>Usuario Vip</th>
+        </thead>
+        <tbody>
+            {% for u in usuarios %}
+                <tr>
+                    <td>{{ u.nombreUsuario }}</td>
+                    <td>{{ u.password }}</td>
+                    <td>{{ u.nombre }}</td>
+                    <td>{{ u.apellidos }}</td>
+                    <td>{{ u.fechaNacimiento | date('d/m/Y') }}</td>
+                    <td>{{ u.correo }}</td>
+                    <td>{{ u.administrador }}</td>
+                    <td>{{ u.usuarioVip }}</td>
+                </tr>
+            {% else %}
+                            <tr>
+                                <td colspan="4">No hay canciones que mostrar</td>
+                            </tr>
+
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

@@ -5,3 +5,16 @@ AppBundle\Entity\Cancion:
       artista: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
       fechaCancion: <dateTimeThisYear()>
       genero: <sentence()>
+
+AppBundle\Entity\Usuario:
+    usuario_{1..20}:
+      nombreUsuario: <es_ES:firstName()>
+      password: <password()>
+      nombre: <es_ES:firstName()>
+      apellidos: <es_ES:lastName()><es_ES:lastName()>
+      fechaNacimiento: <dateTimeThisYear()>
+      correo: <email()>
+      administrador: false
+      usuarioVip: <boolean(10)>
+
+
