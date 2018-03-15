@@ -9,7 +9,10 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Nelmio\Alice\Instances\Collection;
+
 
 /**
  * @ORM\Entity
@@ -73,6 +76,23 @@ class Usuario
      * @var boolean
      */
     private $usuarioVip;
+
+    /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ListaMusica", mappedBy="propietario")
+     *
+     * @var Collection|ListaMusica[]
+     */
+    private $listasPublicadas;
+
+    public  function __construct()
+    {
+        $this->listasPublicadas = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->getNombreUsuario();
+    }
     /**
      * @return mixed
      */
@@ -88,10 +108,6 @@ class Usuario
         $this->id = $id;
     }
 
-    public function __toString()
-    {
-        return $this->getNombreUsuario();
-    }
     /**
      * @return mixed
      */

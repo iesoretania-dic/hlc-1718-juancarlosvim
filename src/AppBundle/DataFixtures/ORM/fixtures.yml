@@ -18,5 +18,9 @@ AppBundle\Entity\Usuario:
       administrador: false
       usuarioVip: <boolean(10)>
 
-
+AppBundle\Entity\ListaMusica:
+    lista_{1..20}:
+      nombre: <sentence()>
+      visible: <boolean(25)>
+      propietario: '@usuario*'
 
