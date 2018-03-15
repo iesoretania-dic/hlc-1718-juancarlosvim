@@ -13,9 +13,9 @@ class CancionController extends Controller
      */
     public function listarAction()
     {
-        $canciones =$this->getDoctrine()->getRepository('AppBundle:Cancion')->findAll();
+        $canciones = $this->getDoctrine()->getRepository('AppBundle:Cancion')->findAll();
 
-        return $this->render('cancion/listar.html.twig', ['canciones' => $canciones ]);
+        return $this->render('cancion/listar.html.twig', ['canciones' => $canciones]);
     }
 
     /**
@@ -23,9 +23,12 @@ class CancionController extends Controller
      */
     public function mostrarAction(Cancion $cancion)
     {
-        return $this->render('cancion/mostrarCancion.html.twig',
-            ['cancion' => $cancion]);
+        //dump($cancion);exit;
+        $usuarios = $cancion->getUsuarios();
+        return $this->render('cancion/mostrarCancionUsuario.html.twig', [
+            'cancion' => $cancion,
+            'usuarios' => $usuarios
+        ]);
     }
-
 
 }

@@ -87,6 +87,11 @@ class Usuario
     {
         $this->id = $id;
     }
+
+    public function __toString()
+    {
+        return $this->getNombreUsuario();
+    }
     /**
      * @return mixed
      */
@@ -191,6 +196,8 @@ class Usuario
     {
         $this->usuarioVip = $usuarioVip;
     }
+
+
 
 
     }

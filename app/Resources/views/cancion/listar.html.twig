@@ -20,7 +20,8 @@
         <tbody>
             {% for cancion in canciones %}
                 <tr>
-                    <td>{{ cancion.titulo }}</td>
+                    <td><a href="{{ path('cancion_mostrar', {'id': cancion.id}) }}">{{ cancion.titulo }}</a></td>
+
                     <td>{{ cancion.artista }}</td>
                     <td>{{ cancion.duracion }}</td>
                     <td>{{ cancion.fechaCancion | date('d/m/Y') }}</td>
@@ -34,5 +35,7 @@
 
             {% endfor %}
         </tbody>
+
+
     </table>
 {% endblock %}

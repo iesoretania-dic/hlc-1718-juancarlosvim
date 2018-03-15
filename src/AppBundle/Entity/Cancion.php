@@ -9,6 +9,7 @@
 namespace AppBundle\Entity;
 
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -55,6 +56,20 @@ class Cancion
      *@var string
      */
     private $genero;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Usuario")
+     *
+     * @var Collection|Usuario[]
+     */
+    private $usuarios;
+
+
+
+    public  function __construct()
+    {
+        $this->usuarios = new ArrayCollection();
+    }
 
     /**
      * @param int $id
@@ -159,6 +174,45 @@ class Cancion
     {
         return $this->genero;
     }
+    /**
+     * @param Usuario $usuario
+     * @return Cancion
+     */
+    public function addUsuario(Usuario $usuario)
+    {
+        if (!$this->usuarios->contains($usuario)) {
+            $this->usuarios->add($usuario);
+        }
 
+        return $this;
+    }
 
+    /**
+     * @param Usuario $usuario
+     * @return Cancion
+     */
+    public function removeUsuario(Usuario $usuario)
+    {
+        $this->usuarios->removeElement($usuario);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Usuario[]
+     */
+    public function getUsuarios()
+    {
+        return $this->usuarios;
+    }
+
+    /**
+     * @param Collection|Usuario[] $usuarios
+     * @return Cancion
+     */
+    public function setUsuarios($usuarios)
+    {
+        $this->usuarios = $usuarios;
+        return $this;
+    }
 }
