@@ -1,0 +1,35 @@
+{% extends 'layout.html.twig' %}
+
+{% block title 'Listas de música'%}
+
+{% block content %}
+    <h1>Todas las listas de Música</h1>
+
+    <table class="table table-bordered table-hover table-striped">
+        <thead>
+
+            <th>Nombre</th>
+            <th>Propietario</th>
+
+
+
+
+        </thead>
+        <tbody>
+            {% for l in listas %}
+                <tr>
+                    <td>{{ l.nombre }}</td>
+                    <td>{{ l.propietario }}</td>
+
+                </tr>
+            {% else %}
+                            <tr>
+                                <td colspan="4">No hay listas de música que mostrar</td>
+                            </tr>
+
+            {% endfor %}
+        </tbody>
+
+
+    </table>
+{% endblock %}

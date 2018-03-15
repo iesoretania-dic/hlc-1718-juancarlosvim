@@ -84,6 +84,9 @@ class Usuario
      */
     private $listasPublicadas;
 
+
+
+
     public  function __construct()
     {
         $this->listasPublicadas = new ArrayCollection();
@@ -212,8 +215,46 @@ class Usuario
     {
         $this->usuarioVip = $usuarioVip;
     }
+    /**
+     * @param ListaMusica $lista
+     * @return Usuario
+     */
+    public function addListaPublicada(ListaMusica $lista)
+    {
+        if (!$this->listasPublicadas->contains($lista)) {
+            $this->listasPublicadas->add($lista);
+        }
 
-
-
-
+        return $this;
     }
+
+    /**
+     * @param ListaMusica $lista
+     * @return Usuario
+     */
+    public function removeListaPublicada(ListaMusica $lista)
+    {
+        $this->listasPublicadas->removeElement($lista);
+
+        return $this;
+    }
+    /**
+     * @param ListaMusica[]|Collection $listasPublicadas
+     */
+    public function setListasPublicadas($listasPublicadas)
+    {
+        $this->listasPublicadas = $listasPublicadas;
+    }
+    /**
+     * @return ListaMusica[]|Collection
+     */
+    public function getListasPublicadas()
+    {
+        return $this->listasPublicadas;
+    }
+
+
+
+
+
+}
