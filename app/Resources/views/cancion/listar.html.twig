@@ -13,7 +13,10 @@
             <th>Duración</th>
             <th>Año</th>
             <th>Género</th>
+            <!-- he utilzado el role admin ya que utilizando el voter no me lo crea -->
+            {% if is_granted('ROLE_ADMIN') %}
             <th>Editar</th>
+            {% endif %}
 
 
 
@@ -21,13 +24,20 @@
         <tbody>
             {% for cancion in canciones %}
                 <tr>
-                    <td><a href="{{ path('cancion_usuario_mostrar', {'id': cancion.id}) }}">{{ cancion.titulo }}</a></td>
+                    <td>
+                    {% if is_granted('CANCION_MODIFICAR', cancion) %}
+                    <a href="{{ path('cancion_usuario_mostrar', {'id': cancion.id}) }}">{{ cancion.titulo }}</a>
+                    {% else %}
+                        {{ cancion.titulo }}
+                    {% endif %}
+                    </td>
+
 
                     <td>{{ cancion.artista }}</td>
                     <td>{{ cancion.duracion }}</td>
                     <td>{{ cancion.fechaCancion | date('d/m/Y') }}</td>
                     <td>{{ cancion.genero }}</td>
-                    <td><a href="{{ path('cancion_mostrar', {'id': cancion.id}) }}" title="Editar Canción"><i class="fa fa-edit"></i></a></td>
+                    {% if is_granted('CANCION_MODIFICAR', cancion) %}<td><a href="{{ path('cancion_mostrar', {'id': cancion.id}) }}" title="Editar Canción"><i class="fa fa-edit"></i></a></td>{% endif %}
 
                 </tr>
             {% else %}

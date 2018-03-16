@@ -6,6 +6,7 @@ use AppBundle\Form\Type\CancionType;
 use AppBundle\Entity\Cancion;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Request;
 
 class CancionController extends Controller
@@ -22,6 +23,7 @@ class CancionController extends Controller
 
     /**
      * @Route("/cancion/usuario/{id}", name="cancion_usuario_mostrar")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function mostrarUsuarioAction(Cancion $cancion)
     {
@@ -36,6 +38,7 @@ class CancionController extends Controller
 
     /**
      * @Route("/cancion/{id}", name="cancion_mostrar")
+     * @Security("is_granted('ROLE_ADMIN')")
      */
     public function mostrarAction(Request $request,Cancion $cancion)
     {

@@ -18,9 +18,25 @@
                 <ul class="nav navbar-nav">
                     <li{% if app.request.attributes.get('_route') == 'inicio' %} class="active"{% endif %}><a href="{{ path('inicio') }}"><i class="fa fa-home"></i> Inicio</a></li>
                     <li{% if app.request.attributes.get('_route') == 'cancion_listar' %} class="active"{% endif %}><a href="{{ path('cancion_listar') }}"><i class="fa fa-music"></i> Canciones</a></li>
+                    {% if is_granted('ROLE_ADMIN') %}
                     <li{% if app.request.attributes.get('_route') == 'usuario_listar' %} class="active"{% endif %}><a href="{{ path('usuario_listar') }}"><i class="fa fa-users"></i> Usuarios</a></li>
+                    {% endif %}
+                    {% if is_granted('ROLE_USER') %}
                     <li{% if app.request.attributes.get('_route') == 'ver_listas' %} class="active"{% endif %}><a href="{{ path('ver_listas') }}"><i class="fa fa-list-ul"></i> Lista Música</a></li>
-
+                    {% endif %}
+                    {% if is_granted('ROLE_VIP') %}
+                    <li{% if app.request.attributes.get('_route') == 'ver_listas' %} class="active"{% endif %}><a href="{{ path('ver_listas') }}"><i class="fa fa-list-ul"></i> Nueva lista Privada</a></li>
+                    {% endif %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    {% if app.user %}
+                        <p class="navbar-text">Conectado como <a href="{{ path('usuario_cambiar_clave') }}" title="Cambiar Contraseña">{{ app.user }}</a></p>
+                    {% endif %}
+                    {% if app.user %}
+                        <li><a href="{{ path('usuario_salir') }}"><i class="fa fa-sign-out"></i> Salir</a></li>
+                    {% else %}
+                        <li><a href="{{ path('usuario_entrar') }}"><i class="fa fa-sign-in"></i> Acceder</a></li>
+                    {% endif %}
                 </ul>
             </div><!--/.nav-collapse -->
         </div>

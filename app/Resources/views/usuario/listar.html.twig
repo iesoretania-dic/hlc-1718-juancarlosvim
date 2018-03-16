@@ -4,6 +4,11 @@
 
 {% block content %}
     <h1>Todos los usuarios</h1>
+    <p class="well well-sm">
+
+        <a href="{{ path('usuario_nuevo') }}" class="btn btn-success"><i class="fa fa-user"></i> Nuevo usuario</a>
+    </p>
+
 
     <table class="table table-bordered table-hover table-striped">
         <thead>
@@ -17,6 +22,7 @@
             <th>administrador</th>
             <th>Usuario Vip</th>
             <th>Editar</th>
+
         </thead>
         <tbody>
             {% for u in usuarios %}
@@ -29,7 +35,9 @@
                     <td>{{ u.correo }}</td>
                     <td>{% if u.administrador == true  %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
                     <td>{% if u.usuarioVip == true  %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
-                    <td><a href="{{ path('editar_usuario', {'id': u.id }) }}" title="Editar Lista"><i class="fa fa-edit"></i></a></td>
+                    {% if is_granted('ROLE_ADMIN')%}
+                    <td><a href="{{ path('editar_usuario', {'id': u.id }) }}" title="Editar Usuario"><i class="fa fa-edit"></i></a></td>
+                    {% endif %}
                 </tr>
             {% else %}
                             <tr>

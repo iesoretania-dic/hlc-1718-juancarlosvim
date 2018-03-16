@@ -10,13 +10,15 @@
             {{ mensaje }}
         </div>
     {% endfor %}
-    <h1>Usuario {{ usuario.nombre }}</h1>
+    <h1>{{ usuario.nombre ? usuario.nombre : 'Nuevo usuario' }}</h1>
     {{ form_start(formulario) }}
     {{ form_widget(formulario) }}
     <div class="form-group">
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
-            <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
+            {% if is_granted('ROLE_ADMIN') %}<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>{% endif %}
+            {% if usuario.id and is_granted('ROLE_ADMIN') %}<a href="{{ path('usuario_eliminar', {'id': usuario.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar Usuario</a>{% endif %}
+            <!--<button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>-->
             <a href="{{ path('usuario_listar') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de canciones</a>
         </div>
     </div>

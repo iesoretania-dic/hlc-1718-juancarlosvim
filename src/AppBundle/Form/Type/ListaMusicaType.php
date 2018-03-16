@@ -17,15 +17,18 @@ class ListaMusicaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
         $builder
             ->add('nombre', null, [
                 'label' => 'Nombre de la lista'
             ])
             ->add('propietario', null, [
-                'label' => 'Propietario de la lista'
+                'label' => 'Propietario de la lista',
+                'disabled' => !$options['admin']
             ])
             ->add('visible', null,[
-                'label' => 'Visible'
+                'label' => 'Visible',
+                'disabled' => !$options['admin']
             ]);
 
     }
@@ -34,6 +37,7 @@ class ListaMusicaType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ListaMusica::class,
+            'admin' => false
         ]);
     }
 }

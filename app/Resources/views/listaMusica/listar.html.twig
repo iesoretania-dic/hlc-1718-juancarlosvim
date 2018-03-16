@@ -4,6 +4,13 @@
 
 {% block content %}
     <h1>Todas las listas de Música</h1>
+    {% if is_granted('ROLE_USER', listas) %}
+    <p class="well well-sm">
+
+        <a href="{{ path('lista_nueva') }}" class="btn btn-success"><i class="fa fa-user"></i> Nueva lista de música</a>
+    </p>
+    {% endif %}
+
 
     <table class="table table-bordered table-hover table-striped">
         <thead>
@@ -11,11 +18,7 @@
             <th>Nombre</th>
             <th>Propietario</th>
             <th>Pública</th>
-            <th>Editar</th>
-
-
-
-
+            {% if is_granted('ROLE_ADMIN') %}<th>Editar</th>{% endif %}
         </thead>
         <tbody>
             {% for l in listas %}
@@ -23,7 +26,7 @@
                     <td>{{ l.nombre }}</td>
                     <td>{{ l.propietario }}</td>
                     <td>{% if l.visible == true  %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
-                    <td><a href="{{ path('lista_Mostrar', {'id': l.id }) }}" title="Editar Lista"><i class="fa fa-edit"></i></a></td>
+                    {% if is_granted('ROLE_ADMIN') %}<td><a href="{{ path('lista_Mostrar', {'id': l.id }) }}" title="Editar Lista"><i class="fa fa-edit"></i></a></td>{% endif %}
 
                 </tr>
             {% else %}

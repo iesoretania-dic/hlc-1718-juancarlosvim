@@ -2,7 +2,7 @@ AppBundle\Entity\Cancion:
     cancion_{1..20}:
       titulo: <sentence()>
       duracion: <sentence()>
-      artista: <es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>
+      artista: '<es_ES:firstName()> <es_ES:lastName()> <es_ES:lastName()>'
       fechaCancion: <dateTimeThisYear()>
       genero: <sentence()>
       usuarios: '<numberBetween(0, 3)>x @usuario*'
@@ -10,20 +10,38 @@ AppBundle\Entity\Cancion:
 AppBundle\Entity\Usuario:
     admin:
       nombreUsuario: admin
-      password: admin
+      password:  <codificaPassword('admin')>
       nombre: Usuario
       apellidos: Administrador
       correo: <es_ES:email()>
       fechaNacimiento: <dateTimeThisYear()>
       administrador: true
       usuarioVip: false
-    usuario_{1..20}:
-      nombreUsuario: <es_ES:firstName()>
-      password: <password()>
-      nombre: <es_ES:firstName()>
-      apellidos: <es_ES:lastName()><es_ES:lastName()>
+    usuario2:
+      nombreUsuario: aitana
+      password:  <codificaPassword('oretania')>
+      nombre: aitana
+      apellidos: ocaña
+      correo: <es_ES:email()>
       fechaNacimiento: <dateTimeThisYear()>
-      correo: <email()>
+      administrador: false
+      usuarioVip: true
+    usuario3:
+      nombreUsuario: pedro
+      password:  <codificaPassword('oretania')>
+      nombre: pedro
+      apellidos: Heidi
+      correo: <es_ES:email()>
+      fechaNacimiento: <dateTimeThisYear()>
+      administrador: false
+      usuarioVip: false
+    usuario_{1..20}:
+      nombreUsuario (unique): <es_ES:firstName()>
+      password: <codificaPassword('usuario')>
+      nombre: <es_ES:firstName()>
+      apellidos: '<es_ES:lastName()> <es_ES:lastName()>'
+      fechaNacimiento: <dateTimeThisYear()>
+      correo: <es_Es:email()>
       administrador: false
       usuarioVip: <boolean(25)>
 

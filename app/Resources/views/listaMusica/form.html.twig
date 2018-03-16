@@ -10,13 +10,14 @@
             {{ mensaje }}
         </div>
     {% endfor %}
-    <h1>Lista de múscia {{ lista.nombre }} realizada por {{ lista.propietario }}</h1>
+    <h1>{{ lista.nombre ? lista.nombre : 'Nueva lista' }}</h1>
     {{ form_start(formulario) }}
     {{ form_widget(formulario) }}
     <div class="form-group">
         <div class="col-sm-2"></div>
         <div class="col-sm-10">
             <button type="submit" class="btn btn-success"><i class="fa fa-check"></i> Guardar cambios</button>
+            {% if lista.id and is_granted('ROLE_ADMIN') %}<a href="{{ path('lista_eliminar', {'id': lista.id}) }}" class="btn btn-danger"><i class="fa fa-trash"></i> Eliminar Lista</a>{% endif %}
             <a href="{{ path('ver_listas') }}" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Volver al listado de canciones</a>
         </div>
     </div>
