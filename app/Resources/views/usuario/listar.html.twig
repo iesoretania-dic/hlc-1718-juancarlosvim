@@ -16,6 +16,7 @@
             <th>correo</th>
             <th>administrador</th>
             <th>Usuario Vip</th>
+            <th>Editar</th>
         </thead>
         <tbody>
             {% for u in usuarios %}
@@ -26,8 +27,9 @@
                     <td>{{ u.apellidos }}</td>
                     <td>{{ u.fechaNacimiento | date('d/m/Y') }}</td>
                     <td>{{ u.correo }}</td>
-                    <td>{{ u.administrador }}</td>
-                    <td>{{ u.usuarioVip }}</td>
+                    <td>{% if u.administrador == true  %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
+                    <td>{% if u.usuarioVip == true  %}<i class="fa fa-check"></i>{% else %}<i class="fa fa-times"></i>{% endif %}</td>
+                    <td><a href="{{ path('editar_usuario', {'id': u.id }) }}" title="Editar Lista"><i class="fa fa-edit"></i></a></td>
                 </tr>
             {% else %}
                             <tr>

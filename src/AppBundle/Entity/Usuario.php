@@ -12,6 +12,7 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Nelmio\Alice\Instances\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
@@ -35,12 +36,23 @@ class Usuario
      */
     private $nombreUsuario;
     /**
+     *
+     *
+     *
      * @ORM\Column(type="string")
      *
      * @var string
      */
     private $password;
     /**
+     *
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     *
      * @ORM\Column(type="string")
      *
      * @var string
@@ -52,17 +64,27 @@ class Usuario
      * @var string
      */
     private $apellidos;
+
     /**
+     *
      * @ORM\Column(type="date", nullable=true)
      *
      * @var \DateTime
      */
     private $fechaNacimiento;
     /**
+     *
+     * @Assert\Email(
+     *     message = "El correo electrónico '{{ value }}' no es válido.",
+     *     checkMX = true
+     * )
+     *
      * @ORM\Column(type="string")
+     *
      *
      *@var string
      */
+
     private $correo;
     /**
      * @ORM\Column(type="boolean")

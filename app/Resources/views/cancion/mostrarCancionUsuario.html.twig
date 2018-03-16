@@ -1,6 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{% block title 'Mostrar usuario'%}
+{% block title %}
+    Usuarios que han escuchado la canción: {{ cancion.titulo }}
+{% endblock %}
 
 {% block content %}
     <h1>Los usuarios que han esuchado la canción {{ cancion.titulo }}</h1>
@@ -15,7 +17,6 @@
         {% for u in usuarios  %}
             <tr>
 
-
                 <td>{{ u.nombre }}</td>
                 <td>{{ u.nombreUsuario }}</td>
                 <td>{{ u.fechaNacimiento  | date('d/m/Y')}}</td>
@@ -29,7 +30,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('cancion_listar') }}"> <button type="button" class="btn btn-lg btn-primary">Volver al listado de canciones</button></a>
-
+    <a href="{{ path('cancion_listar') }}"><button type="button" class="btn btn-lg btn-primary"><i class="fa fa-arrow-left"></i>Volver al listado de canciones</button></a>
 {% endblock %}

@@ -46,6 +46,11 @@ class ListaMusica
      */
     private  $propietario;
 
+    public function __toString()
+    {
+        return $this->getNombre();
+    }
+
     /**
      * @return int
      */
