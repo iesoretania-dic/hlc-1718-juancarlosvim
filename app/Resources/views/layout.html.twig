@@ -24,9 +24,7 @@
                     {% if is_granted('ROLE_USER') %}
                     <li{% if app.request.attributes.get('_route') == 'ver_listas' %} class="active"{% endif %}><a href="{{ path('ver_listas') }}"><i class="fa fa-list-ul"></i> Lista Música</a></li>
                     {% endif %}
-                    {% if is_granted('ROLE_VIP') %}
-                    <li{% if app.request.attributes.get('_route') == 'ver_listas' %} class="active"{% endif %}><a href="{{ path('ver_listas') }}"><i class="fa fa-list-ul"></i> Nueva lista Privada</a></li>
-                    {% endif %}
+
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     {% if app.user %}

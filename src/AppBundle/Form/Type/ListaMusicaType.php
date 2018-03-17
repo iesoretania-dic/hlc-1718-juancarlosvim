@@ -28,7 +28,8 @@ class ListaMusicaType extends AbstractType
             ])
             ->add('visible', null,[
                 'label' => 'Visible',
-                'disabled' => !$options['admin']
+                'disabled' => !$options['vip'] //permito que el usuario vip pueda hacerla visible o privada la lista
+
             ]);
 
     }
@@ -37,7 +38,9 @@ class ListaMusicaType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => ListaMusica::class,
-            'admin' => false
+            'admin' => false,
+            'vip' => false
+
         ]);
     }
 }

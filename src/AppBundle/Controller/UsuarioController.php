@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Usuario;
 use AppBundle\Form\Type\CambioClaveType;
 use AppBundle\Form\Type\UsuarioType;
+use AppBundle\Security\UsuarioVoter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -28,15 +29,27 @@ class UsuarioController extends Controller
     /**
      * @Route("/usuario/nuevo", name="usuario_nuevo")
      * @Security("is_granted('ROLE_ADMIN')")
+     *
      */
-    public function nuevaAction(Request $request)
+    public function nuevoUsuarioAction(Request $request, Usuario $usuario =null)
     {
         $em = $this->getDoctrine()->getManager();
 
-        $usuario = new Usuario();
-        $em->persist($usuario);
+        if (null === $usuario) {
+            $usuario = new Usuario();
+            $usuario->setNombreUsuario("");
+            $usuario->setNombre("");
+            $usuario->setApellidos("");
+            $usuario->setCorreo("");
+            $usuario->setFechaNacimiento(new \DateTime());
+            $usuario->setPassword("");
+            $usuario->setUsuarioVip(false);
+            $usuario->setAdministrador(false);
+            $em->persist($usuario);
+        }
 
         $form = $this->createForm(UsuarioType::class, $usuario, [
+            'disabled' => !$this->isGranted(UsuarioVoter::MODIFICAR, $usuario),
             'admin' => $this->isGranted('ROLE_ADMIN')
         ]);
 
@@ -68,7 +81,9 @@ class UsuarioController extends Controller
         //dump($cancion);exit;
         $em = $this->getDoctrine()->getManager();
 
-        $form = $this->createForm(UsuarioType::class, $usuario);
+        $form = $this->createForm(UsuarioType::class, $usuario,[
+            'admin' => $this->isGranted('ROLE_ADMIN')
+        ]);
 
         $form->handleRequest($request);
 

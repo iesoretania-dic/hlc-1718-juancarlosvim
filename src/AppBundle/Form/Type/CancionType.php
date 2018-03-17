@@ -9,7 +9,6 @@
 namespace AppBundle\Form\Type;
 
 use AppBundle\Entity\Cancion;
-use AppBundle\Entity\Usuario;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -48,6 +47,7 @@ class CancionType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Cancion::class,
+
         ]);
     }
 

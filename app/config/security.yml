@@ -11,9 +11,8 @@ security:
     encoders:
         AppBundle\Entity\Usuario: bcrypt
     role-hierarchy:
-            ROLE_ADMIN: [ROLE_USUARIO, ROLE_VIP]
-            ROLE_VIP: ROLE_VIP
-            ROLE_USUARIO: ROLE_USER
+            ROLE_ADMIN: ROLE_VIP
+            ROLE_VIP: ROLE_USER
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
         dev:

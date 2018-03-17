@@ -20,32 +20,39 @@ class UsuarioType extends AbstractType
     {
         $builder
             ->add('nombreUsuario', null, [
-                'label' => 'Nombre de usuario'
+                'label' => 'Nombre de usuario',
+                'disabled' => !$options['admin']
             ])
             ->add('password', null, [
-                'label' => 'Contraseña'
+                'label' => 'Contraseña',
+                'disabled' => !$options['admin']
             ])
             ->add('nombre', null,[
-                'label' => 'Nombre Real'
+                'label' => 'Nombre Real',
+                'disabled' => !$options['admin']
             ])
             ->add('apellidos', null,[
-                'label' => 'Apellidos'
+                'label' => 'Apellidos',
+                'disabled' => !$options['admin']
             ])
             ->add('fechaNacimiento', null,[
                 'label' => 'Fecha Nacimiento',
-                'widget' => 'single_text'
+                'widget' => 'single_text',
+                'disabled' => !$options['admin']
             ])
             ->add('correo', null,[
                 'label' => 'Correo Electrónico',
+                'disabled' => !$options['admin']
 
             ])
             ->add('administrador', null,[
                 'label' => 'Adminsitrador',
+                'disabled' => !$options['admin']
 
             ])
             ->add('usuarioVip', null,[
                 'label' => 'Usuario Vip',
-
+                'disabled' => !$options['admin']
             ]);
     }
 
@@ -53,6 +60,7 @@ class UsuarioType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Usuario::class,
+            'admin'=> false
         ]);
     }
 
